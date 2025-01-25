@@ -6,7 +6,7 @@ interface Props {
 
 const ImageFrame = ({ uri, title, width = 300 }: Props) => {
   return (
-    <a href={uri}>
+    <a href={uri} target="_blank">
       <img
         width={width}
         srcSet={`${uri}?w=161&fit=crop&auto=format&dpr=2 2x`}
