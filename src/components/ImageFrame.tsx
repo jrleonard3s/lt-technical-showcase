@@ -1,21 +1,16 @@
 interface Props {
   uri: string;
   title?: string;
-  width?: number;
+  width: number;
 }
 
-const ImageFrame = ({ uri, title, width = 300 }: Props) => {
+const ImageFrame = ({ uri, title, width }: Props) => {
   return (
     <a href={uri} target="_blank">
-      <img
-        width={width}
-        srcSet={`${uri}?w=161&fit=crop&auto=format&dpr=2 2x`}
-        src={`${uri}?w=161&fit=crop&auto=format`}
-        alt={title}
-        loading="lazy"
-      />
+      <img src={uri} alt={title} width={width} loading="lazy" />
     </a>
   );
 };
 
 export default ImageFrame;
+ 

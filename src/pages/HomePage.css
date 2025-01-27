@@ -8,6 +8,11 @@
   padding: 0;
 }
 
+.imageListContainer{
+  margin: auto;
+  padding: 0;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
