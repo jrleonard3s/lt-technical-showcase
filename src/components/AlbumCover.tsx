@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import "./AlbumCover.css";
+import "./ImageContainers.css";
 import { Photo } from "../types";
 
 interface Props {
