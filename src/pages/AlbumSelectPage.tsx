@@ -57,12 +57,11 @@ const AlbumSelectPage = () => {
       <div className="flexbox">
         {isFiltered ? (
           <>
-            {" "}
             {filteredData.length > 0 ? (
               albumCovers(filteredData)
             ) : (
-              <div>No results found</div>
-            )}{" "}
+              <p>No results found</p>
+            )}
           </>
         ) : (
           albumCovers(data)

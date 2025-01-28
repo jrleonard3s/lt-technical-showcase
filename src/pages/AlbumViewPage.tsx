@@ -3,8 +3,13 @@ import Gallery from "./Gallery";
 import { useQuery } from "@tanstack/react-query";
 import { Photo } from "../types";
 import TopBar from "../components/TopBar";
+import { useState } from "react";
+import "./AlbumViewPage.css";
 
 const AlbumViewPage = () => {
+  const [filteredData, setFilteredData] = useState<Photo[]>([]);
+  const [isFiltered, setIsFiltered] = useState(false);
+
   const { albumId } = useParams();
   // start the query as disabled so we don't fetch if the album has been passed in
   const { data, error } = useQuery({
@@ -12,14 +17,38 @@ const AlbumViewPage = () => {
     queryFn: () => getAlbum(albumId!),
   });
 
+  const onSearch = (searchTerm: string) => {
+    if (data !== undefined) {
+      setFilteredData(
+        data?.filter((photo) =>
+          photo.title.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+      setIsFiltered(searchTerm.length > 0);
+    }
+  };
+
   if (error) {
     alert("Failed to load album");
   }
 
   return (
     <>
-      <TopBar title={`Album ${albumId}`} showHomeButton={true} />
-      {data !== undefined && <Gallery photos={data} />}
+      <TopBar
+        title={`Album ${albumId}`}
+        showHomeButton={true}
+        searchCallback={onSearch}
+      />
+      {data !== undefined && !isFiltered && <Gallery photos={data} />}
+      {data !== undefined && isFiltered && (
+        <>
+          {filteredData.length > 0 ? (
+            <Gallery photos={filteredData} />
+          ) : (
+            <p className="noResultsText">No results found</p>
+          )}
+        </>
+      )}
     </>
   );
 };
