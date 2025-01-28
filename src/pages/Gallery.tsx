@@ -4,13 +4,6 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import "./Gallery.css";
 import TopBar from "../components/TopBar";
 
-export type Photo = {
-  url: string;
-  title: string;
-  albumId: number;
-  photoId: number;
-};
-
 interface Props {
   photos: Photo[];
   title?: string;

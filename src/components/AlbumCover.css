@@ -34,8 +34,7 @@ h2 {
     width: 100%;
     background: rgba(36, 31, 65, 0.85);
     color: #fff;
-    visibility: hidden;
-    opacity: 0;
+    opacity: 0.5;
 
     transition: .3s ease;
 }
@@ -55,4 +54,8 @@ h2 {
 .container:hover .overlay {
     visibility: visible;
     opacity: 1;
+  }
+
+  .spinner{
+    margin:auto;
   }

@@ -1,22 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { Photo } from "./Gallery";
 import AlbumCover from "../components/AlbumCover";
-import { LinearProgress } from "@mui/material";
-
-export type Album = {
-  albumId: number;
-  photos: Photo[];
-};
-
-export type Albums = {
-  albums: Album[];
-};
+import { Album } from "../types";
 
 const AlbumSelectPage = () => {
-  var parsedResponse: Album[] = [];
-
   // Setup fetch query
-  const { data, isFetching, isFetched, error } = useQuery({
+  const { data, isFetched, error } = useQuery({
     queryKey: ["albums"],
     queryFn: getAlbums,
   });
@@ -24,29 +12,22 @@ const AlbumSelectPage = () => {
     alert("Album fetch failed");
     console.log(error);
   }
-  if (isFetching) {
-    return <LinearProgress />;
-  }
-  if (isFetched) {
-    parsedResponse = JSON.parse(JSON.stringify(data)) as Album[];
-    parsedResponse.sort((a, b) => a.albumId - b.albumId);
-  }
+
+  data?.sort((a, b) => a.albumId - b.albumId);
   return (
     <div>
-      {!isFetched
-        ? "todo spinner"
-        : parsedResponse.map((album, index) => (
-            <AlbumCover
-              key={index}
-              albumId={album.albumId}
-              photos={album.photos}
-            ></AlbumCover>
-          ))}
+      {data?.map((album, index) => (
+        <AlbumCover
+          key={index}
+          albumId={album.albumId}
+          photos={album.photos}
+        ></AlbumCover>
+      ))}
     </div>
   );
 };
 
-const getAlbums = async () => {
+const getAlbums = async (): Promise<Album[]> => {
   const response = await fetch("ltapi/albums", {
     headers: {
       lt_api_key: "lt_tech_showcase",
