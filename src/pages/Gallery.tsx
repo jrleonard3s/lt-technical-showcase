@@ -2,22 +2,19 @@ import { Box, ImageList, ImageListItem } from "@mui/material";
 import ImageFrame from "../components/ImageFrame";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import "./Gallery.css";
-import TopBar from "../components/TopBar";
 import { Photo } from "../types";
 
 interface Props {
   photos: Photo[];
-  title?: string;
 }
 
-const Gallery = ({ title, photos }: Props) => {
+const Gallery = ({ photos }: Props) => {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
 
   const imageListWidth = windowWidth * 0.85;
   const imageWidth = Math.min(300, imageListWidth);
   return (
     <>
-      <TopBar title={title} />
       <Box
         className="imageListContainer"
         sx={{

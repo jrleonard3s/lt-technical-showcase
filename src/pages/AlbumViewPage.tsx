@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import Gallery from "./Gallery";
 import { useQuery } from "@tanstack/react-query";
 import { Photo } from "../types";
+import TopBar from "../components/TopBar";
 
 const AlbumViewPage = () => {
   const { albumId } = useParams();
@@ -17,11 +18,8 @@ const AlbumViewPage = () => {
 
   return (
     <>
-      {data !== undefined ? (
-        <Gallery title={`Album ${albumId}`} photos={data} />
-      ) : (
-        <div>undefined</div>
-      )}
+      <TopBar title={`Album ${albumId}`} showHomeButton={true} />
+      {data !== undefined && <Gallery photos={data} />}
     </>
   );
 };

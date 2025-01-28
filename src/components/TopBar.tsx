@@ -5,6 +5,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home";
+import { Link, NavLink, useNavigate } from "react-router";
+import { IconButton } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -50,13 +53,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 interface Props {
   title?: string;
+  showHomeButton?: boolean;
 }
 
-export default function TopBar({ title }: Props) {
+export default function TopBar({ title, showHomeButton = false }: Props) {
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate("/");
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
+          {showHomeButton && (
+            <IconButton onClick={onClick}>
+              <HomeIcon />
+            </IconButton>
+          )}
           <Typography
             variant="h6"
             noWrap
