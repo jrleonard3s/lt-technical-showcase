@@ -6,10 +6,11 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
-import { Link, NavLink, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { IconButton } from "@mui/material";
 import { useDebouncedCallback } from "use-debounce";
 
+/* from material ui */
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -69,6 +70,7 @@ export default function TopBar({
     navigate("/");
   };
 
+  // Debounce searching so we don't call the callback immediately for every keystroke
   const debounced = useDebouncedCallback(
     // function
     (searchTerm) => {

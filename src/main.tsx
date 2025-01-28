@@ -14,12 +14,13 @@ createRoot(document.getElementById("root")!).render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
+          <Route path="*" element={<NotFoundPage />} />
           <Route
             path="/"
             element={<AlbumSelectPage />}
             errorElement={<NotFoundPage />}
           />
-          <Route path="/:albumId" element={<AlbumViewPage />} />
+          <Route path="/album/:albumId" element={<AlbumViewPage />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

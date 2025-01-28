@@ -50,11 +50,10 @@ const AlbumSelectPage = () => {
     );
   };
 
-  //data?.sort((a, b) => a.albumId - b.albumId);
   return (
     <>
       <TopBar searchCallback={onSearch} />
-      <div className="flexbox">
+      <div className="albumSelectFlexbox">
         {isFiltered ? (
           <>
             {filteredData.length > 0 ? (

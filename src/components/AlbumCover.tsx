@@ -10,12 +10,12 @@ interface Props {
 const AlbumCover = ({ albumId, photos }: Props) => {
   return (
     <>
-      <div className="cover">
+      <div className="albumCover">
         <h2>Album {albumId}</h2>
-        <Link className="container" to={`${albumId}`}>
-          <img className="image" src={photos[0].url} />
-          <div className="overlay">
-            <div className="text">
+        <Link className="albumCoverContainer" to={`album/${albumId}`}>
+          <img className="albumCoverImage" src={photos[0].url} />
+          <div className="albumCoverOverlay">
+            <div className="albumCoverText">
               {photos.length} Photo{photos.length > 1 ? "s" : ""}
             </div>
           </div>

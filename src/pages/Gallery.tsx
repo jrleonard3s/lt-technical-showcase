@@ -9,7 +9,7 @@ interface Props {
 const Gallery = ({ photos }: Props) => {
   return (
     <>
-      <div className="flexbox">
+      <div className="galleryFlexbox">
         {photos.map((photo, index) => (
           <ImageFrame key={index} photo={photo}></ImageFrame>
         ))}

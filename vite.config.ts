@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -8,6 +9,12 @@ export default defineConfig({
     proxy: {
       "/ltapi": {
         rewrite: (path) => path.replace(/^\/ltapi/, ""),
+        target: "https://showcase.leantechniques.com",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/album/ltapi": {
+        rewrite: (path) => path.replace(/^\/album\/ltapi/, ""),
         target: "https://showcase.leantechniques.com",
         changeOrigin: true,
         secure: false,

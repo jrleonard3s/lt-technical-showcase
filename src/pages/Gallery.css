@@ -2,17 +2,7 @@
   margin: auto;
 }
 
-.imageList{
-  margin: auto;
-  padding: 0;
-}
-
-.imageListContainer{
-  margin: 0;
-  padding: 0;
-}
-
-.flexbox{
+.galleryFlexbox{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
