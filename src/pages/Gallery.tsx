@@ -1,6 +1,6 @@
 import { Box, ImageList, ImageListItem } from "@mui/material";
 import ImageFrame from "../components/ImageFrame";
-import useWindowDimensions from "../ViewportHooks";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import "./Gallery.css";
 import TopBar from "../components/TopBar";
 
