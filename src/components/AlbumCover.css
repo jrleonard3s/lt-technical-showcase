@@ -8,8 +8,8 @@ h2 {
     display: block;
     padding: 0;
     text-align: center;
-    width: 33%;
-    margin: auto;
+    max-width: 400px;;
+    margin: 20px;
     margin-top: 0;
     margin-bottom: 30px;
 }

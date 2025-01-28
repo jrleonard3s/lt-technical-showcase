@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import AlbumCover from "../components/AlbumCover";
 import { Album } from "../types";
+import TopBar from "../components/TopBar";
+import "./AlbumSelectPage.css";
 
 const AlbumSelectPage = () => {
   // Setup fetch query
-  const { data, isFetched, error } = useQuery({
+  const { data, error } = useQuery({
     queryKey: ["albums"],
     queryFn: getAlbums,
   });
@@ -15,15 +17,19 @@ const AlbumSelectPage = () => {
 
   data?.sort((a, b) => a.albumId - b.albumId);
   return (
-    <div>
-      {data?.map((album, index) => (
-        <AlbumCover
-          key={index}
-          albumId={album.albumId}
-          photos={album.photos}
-        ></AlbumCover>
-      ))}
-    </div>
+    <>
+      <TopBar />
+      <div className="flexbox">
+        {data?.map((album, index) => (
+          <div key={index}>
+            <AlbumCover
+              albumId={album.albumId}
+              photos={album.photos}
+            ></AlbumCover>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 

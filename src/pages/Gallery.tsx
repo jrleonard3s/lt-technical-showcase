@@ -3,6 +3,7 @@ import ImageFrame from "../components/ImageFrame";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import "./Gallery.css";
 import TopBar from "../components/TopBar";
+import { Photo } from "../types";
 
 interface Props {
   photos: Photo[];
@@ -29,10 +30,10 @@ const Gallery = ({ title, photos }: Props) => {
           className="imageList"
           variant="masonry"
           cols={Math.max(Math.floor(imageListWidth / imageWidth), 1)}
-          //style={{
-          //  width: imageListWidth,
-          //  height: windowHeight - 64 /* height of the top app bar */,
-          //}}
+          style={{
+            width: imageListWidth,
+            height: windowHeight - 64 /* height of the top app bar */,
+          }}
           gap={4}
         >
           {photos.map((photo, idx) => (

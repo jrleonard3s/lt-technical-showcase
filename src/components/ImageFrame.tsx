@@ -1,4 +1,4 @@
-import { Photo } from "../pages/Gallery";
+import { Photo } from "../types";
 
 interface Props {
   photo: Photo;

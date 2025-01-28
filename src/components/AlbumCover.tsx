@@ -1,8 +1,8 @@
-import { Photo } from "../pages/Gallery";
 import { Link } from "react-router";
 import "./AlbumCover.css";
 import { useState } from "react";
 import { CircularProgress } from "@mui/material";
+import { Photo } from "../types";
 
 interface Props {
   albumId: number;
@@ -15,7 +15,7 @@ const AlbumCover = ({ albumId, photos }: Props) => {
     <>
       <div className="cover" style={{ display: loaded ? "block" : "none" }}>
         <h2>Album {albumId}</h2>
-        <Link className="container" to="todo">
+        <Link className="container" to={`${albumId}`}>
           <img
             className="image"
             src={photos[0].url}

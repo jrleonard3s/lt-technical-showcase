@@ -4,8 +4,8 @@ export type Album = {
 };
 
 export type Photo = {
-  url: string;
-  title: string;
   albumId: number;
   photoId: number;
+  title: string;
+  url: string;
 };
