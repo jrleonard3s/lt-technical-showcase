@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import "./AlbumCover.css";
 import { Photo } from "../types";
+import fallback_image from "../assets/image_fallback.png";
 
 interface Props {
   albumId: number;
@@ -13,7 +14,13 @@ const AlbumCover = ({ albumId, photos }: Props) => {
       <div className="albumCover">
         <h2>Album {albumId}</h2>
         <Link className="albumCoverContainer" to={`album/${albumId}`}>
-          <img className="albumCoverImage" src={photos[0].url} />
+          <img
+            data-testid="testid"
+            className="albumCoverImage"
+            src={photos.length > 0 ? photos[0].url : fallback_image}
+            alt={`Album ${albumId}`}
+            aria-description={`Album ${albumId}`}
+          />
           <div className="albumCoverOverlay">
             <div className="albumCoverText">
               {photos.length} Photo{photos.length > 1 ? "s" : ""}
