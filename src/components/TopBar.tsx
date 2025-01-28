@@ -48,7 +48,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function TopBar() {
+interface Props {
+  title?: string;
+}
+
+export default function TopBar({ title }: Props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -59,7 +63,7 @@ export default function TopBar() {
             component="div"
             sx={{ flexGrow: 3, display: { xs: "none", sm: "block" }, ml: 1 }}
           >
-            Lean Techniques Photo Gallery
+            {title ? title : "Lean Techniques Photo Gallery"}
           </Typography>
           <Search sx={{ flexGrow: 1, mr: 1 }}>
             <SearchIconWrapper>

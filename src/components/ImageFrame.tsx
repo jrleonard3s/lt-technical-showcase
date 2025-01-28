@@ -1,16 +1,16 @@
+import { Photo } from "../pages/Gallery";
+
 interface Props {
-  uri: string;
-  title?: string;
+  photo: Photo;
   width: number;
 }
 
-const ImageFrame = ({ uri, title, width }: Props) => {
+const ImageFrame = ({ photo, width }: Props) => {
   return (
-    <a href={uri} target="_blank">
-      <img src={uri} alt={title} width={width} loading="lazy" />
+    <a href={photo.url} target="_blank">
+      <img src={photo.url} alt={photo.title} width={width} loading="lazy" />
     </a>
   );
 };
 
 export default ImageFrame;
- 

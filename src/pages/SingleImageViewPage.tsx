@@ -1,5 +1,8 @@
+import { useParams } from "react-router";
+
 const SingleImageViewPage = () => {
-  return <div>SingleImageViewPage</div>;
+  const { photoId } = useParams();
+  return <div>View image {photoId}</div>;
 };
 
 export default SingleImageViewPage;
