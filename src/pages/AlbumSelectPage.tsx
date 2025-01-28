@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Photo } from "./Gallery";
 import AlbumCover from "../components/AlbumCover";
+import { LinearProgress } from "@mui/material";
 
 export type Album = {
   albumId: number;
@@ -15,13 +16,16 @@ const AlbumSelectPage = () => {
   var parsedResponse: Album[] = [];
 
   // Setup fetch query
-  const { data, isFetched, error } = useQuery({
+  const { data, isFetching, isFetched, error } = useQuery({
     queryKey: ["albums"],
     queryFn: getAlbums,
   });
   if (error) {
     alert("Album fetch failed");
     console.log(error);
+  }
+  if (isFetching) {
+    return <LinearProgress />;
   }
   if (isFetched) {
     parsedResponse = JSON.parse(JSON.stringify(data)) as Album[];
