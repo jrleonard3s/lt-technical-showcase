@@ -6,7 +6,6 @@ h2 {
     display: block;
     padding: 0;
     text-align: center;
-    max-width: 400px;;
     margin: 20px;
     margin-top: 0;
     margin-bottom: 30px;
@@ -18,8 +17,8 @@ h2 {
 
 .image {
     display: block;
-    width: 100%;
-    height: auto;
+    max-width: 400px;
+    max-height: 400px;
   }
   
 .overlay {
