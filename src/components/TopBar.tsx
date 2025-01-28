@@ -8,6 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link, NavLink, useNavigate } from "react-router";
 import { IconButton } from "@mui/material";
+import { useDebouncedCallback } from "use-debounce";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -54,14 +55,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 interface Props {
   title?: string;
   showHomeButton?: boolean;
+  searchCallback: (searchTerm: string) => void;
 }
 
-export default function TopBar({ title, showHomeButton = false }: Props) {
+export default function TopBar({
+  title,
+  showHomeButton = false,
+  searchCallback,
+}: Props) {
   const navigate = useNavigate();
 
   const onClick = () => {
     navigate("/");
   };
+
+  const debounced = useDebouncedCallback(
+    // function
+    (searchTerm) => {
+      searchCallback(searchTerm);
+    },
+    // delay in ms
+    500
+  );
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -86,6 +102,7 @@ export default function TopBar({ title, showHomeButton = false }: Props) {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              onChange={(event) => debounced(event.target.value)}
             />
           </Search>
         </Toolbar>
