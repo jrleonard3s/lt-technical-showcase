@@ -19,7 +19,7 @@ const AlbumCover = ({ albumId, photos }: Props) => {
           data-testid="routerLink"
         >
           <img
-            data-testid="testid"
+            data-testid="album-cover-testid"
             className="albumCoverImage"
             src={photos.length > 0 ? photos[0].url : fallback_image}
             alt={`Album ${albumId}`}

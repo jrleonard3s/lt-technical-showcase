@@ -10,7 +10,6 @@ const AlbumSelectPage = () => {
   const [isFiltered, setIsFiltered] = useState(false);
 
   const onSearch = (searchTerm: string) => {
-    console.log("searching for " + searchTerm);
     const containsSearchTerm = (album: Album, searchTerm: string): boolean => {
       return album.photos.some((photo) =>
         photo.title.toLowerCase().includes(searchTerm.toLowerCase())
