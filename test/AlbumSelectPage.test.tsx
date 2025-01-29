@@ -6,12 +6,11 @@ import {
   describe,
   expect,
   it,
-  vi,
 } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import AlbumSelectPage from "../src/pages/AlbumSelectPage";
 import { BrowserRouter } from "react-router";
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw";
 import { setupServer } from "msw/node";
@@ -74,10 +73,12 @@ describe("Search bar", () => {
       </BrowserRouter>
     );
 
+    // Wait for fetch and rerender
     await waitFor(() => {
       expect(screen.queryAllByTestId("album-cover-testid").length).toEqual(2);
     });
 
+    // Check that both albums are present
     expect(screen.getByAltText("Album 1")).toBeInTheDocument();
     expect(screen.getByAltText("Album 2")).toBeInTheDocument();
   });

@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import Gallery from "./Gallery";
+import Gallery from "../components/Gallery";
 import { useQuery } from "@tanstack/react-query";
 import { Photo } from "../types";
 import TopBar from "../components/TopBar";
@@ -7,16 +7,18 @@ import { useState } from "react";
 import "./AlbumViewPage.css";
 
 const AlbumViewPage = () => {
-  const [filteredData, setFilteredData] = useState<Photo[]>([]);
-  const [isFiltered, setIsFiltered] = useState(false);
-
+  // get album id from url
   const { albumId } = useParams();
-  // start the query as disabled so we don't fetch if the album has been passed in
+  // tanstack query
   const { data, error } = useQuery({
     queryKey: ["album", albumId],
     queryFn: () => getAlbum(albumId!),
   });
+  const [filteredData, setFilteredData] = useState<Photo[]>([]);
+  const [isFiltered, setIsFiltered] = useState(false);
 
+  // Filter the photos for the search term and flag that we should
+  // use the filtered list
   const onSearch = (searchTerm: string) => {
     if (data !== undefined) {
       setFilteredData(

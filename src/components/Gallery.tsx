@@ -1,4 +1,4 @@
-import ImageFrame from "../components/ImageFrame";
+import ImageFrame from "./ImageFrame";
 import "./Gallery.css";
 import { Photo } from "../types";
 
@@ -9,7 +9,7 @@ interface Props {
 const Gallery = ({ photos }: Props) => {
   return (
     <>
-      <div className="galleryFlexbox">
+      <div className="galleryFlexbox" data-testid="gallery-testid">
         {photos.map((photo, index) => (
           <ImageFrame key={index} photo={photo}></ImageFrame>
         ))}
