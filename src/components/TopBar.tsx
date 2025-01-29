@@ -72,7 +72,6 @@ export default function TopBar({
 
   // Debounce searching so we don't call the callback immediately for every keystroke
   const debounced = useDebouncedCallback(
-    // function
     (searchTerm) => {
       searchCallback(searchTerm);
     },

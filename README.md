@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# Lean Technology Technical Showcase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Technical showcase for Joshua Leonard. A UI application that displays photos fetched from the leantechniques showcase API.
 
-Currently, two official plugins are available:
+The search bar filters both albums and individual photos. The albums and photos will dynamically resize and change position to accomodate a wide array of screen sizes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Preview
 
-## Expanding the ESLint configuration
+https://youtu.be/onymxbjDhXE
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Running the App
 
-- Configure the top-level `parserOptions` property like this:
+Cloning and mounting the repo
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+git clone https://github.com/jrleonard3s/lt-technical-showcase.git
+cd lt-technical-showcase
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Install dependencies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```
+npm install
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Running the app
+
+```
+npm run dev
+```
+
+Then follow the link displayed, something similar to
+
+```
+http://localhost:5173/
+```
+
+All in one command
+
+```
+git clone https://github.com/jrleonard3s/lt-technical-showcase.git
+cd lt-technical-showcase
+npm install
+npm run dev
+```
+
+## Testing
+
+Running the included tests requires the same cloning and dependency installation commands as running the app followed by
+
+```
+npm run test
 ```

@@ -32,6 +32,7 @@ const AlbumViewPage = () => {
 
   if (error) {
     alert("Failed to load album");
+    console.log(error);
   }
 
   return (
