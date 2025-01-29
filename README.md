@@ -1,6 +1,6 @@
 # Lean Technology Technical Showcase
 
-Technical showcase for Joshua Leonard. A UI application that displays photos fetched from the leantechniques showcase API.
+Technical showcase for Joshua Leonard. A ReactJs UI application that displays photos fetched from the leantechniques showcase API.
 
 The search bar filters both albums and individual photos. The albums and photos will dynamically resize and change position to accomodate a wide array of screen sizes.
 
